@@ -12,7 +12,7 @@ def main():
     s =0
     spy =list()
     fli = list()
-    nspiders = 40
+    nspiders = 60
     nflies = 170
     #import the points
     flyform = open("./forms/fly.form",'r')
@@ -42,7 +42,7 @@ def main():
         reproduceflies(flies)
         print("Flies population:" + str(len(flies)))
         print("Spiders population: " + str(len(spiders)))
-        if(len(flies) ==0 or len(spiders) == 0 or len(flies) >=10000):
+        if(len(flies) ==0 or len(spiders) == 0 or len(flies) >=100000):
             if len(flies) <=0:
                 for i in range(nflies):
                         flies.append(fl.fly(ram.randint(0,1000),ram.randint(0,600)))
