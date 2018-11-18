@@ -18,6 +18,10 @@ class fly:
                 else:
                     pt.setOutline("black")
                 pt.draw(window)
+    def simpledraw(self,window):
+        pt = Point(self.x,self.y)
+        pt.setOutline("blue")
+        pt.draw(window)
     def move(self,w,h):
         xp = random.randint(-40,40)
         yp = random.randint(-40,40)

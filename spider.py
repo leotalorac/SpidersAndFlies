@@ -20,8 +20,14 @@ class spider:
         e2.setOutline("yellow")
         e1.draw(window)
         e2.draw(window)
+    def simpledraw(self,window):
+        pt = Point(self.x,self.y)
+        cl = Circle(pt,3.0)
+        cl.setFill("red")
+        cl.setOutline("red")
+        cl.draw(window)
     def eat(self,flies):
-        a = 2
+        a = 3
         for i in flies:
             d = math.sqrt(abs(self.x - i.x )) + math.sqrt(abs(self.y - i.y))
             if a == 0:
@@ -33,7 +39,7 @@ class spider:
                 self.belly+=1
                 a-=1
                 # break
-        if(a == 2):
+        if(a == 3):
             self.live -=1
             # print(self.live)
     def reproduce(self,spiders, me):
@@ -41,8 +47,8 @@ class spider:
             spiders.remove(me)
             # print("quit" + str(len(spiders)))
             return
-        if self.belly >=4:
-            numsons = random.randint(0,10)
+        if self.belly >=5:
+            numsons = random.randint(2,15)
             for i in range(numsons):
                 sx = self.x + random.randint(0,20)
                 sy = self.y + random.randint(0,20)

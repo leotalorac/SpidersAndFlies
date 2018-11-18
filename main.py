@@ -1,7 +1,7 @@
 from graphics import *
 import spider as sp
 import fly as fl
-import random as ram
+import random as random
 import time
 import matplotlib.pyplot as plt
 height = 600
@@ -12,7 +12,7 @@ def main():
     s =0
     spy =list()
     fli = list()
-    nspiders = 60
+    nspiders = 80
     nflies = 170
     #import the points
     flyform = open("./forms/fly.form",'r')
@@ -25,9 +25,9 @@ def main():
     flies = list()
     #put init
     for i in range(nspiders):
-        spiders.append(sp.spider(ram.randint(0,1000),ram.randint(0,600)))
+        spiders.append(sp.spider(random.randint(0,wight),random.randint(0,height)))
     for i in range(nflies):
-        flies.append(fl.fly(ram.randint(0,1000),ram.randint(0,600)))
+        flies.append(fl.fly(random.randint(0,wight),random.randint(0,height)))
     while(True):
         series.append(s)
         s+=1
@@ -42,10 +42,13 @@ def main():
         reproduceflies(flies)
         print("Flies population:" + str(len(flies)))
         print("Spiders population: " + str(len(spiders)))
-        if(len(flies) ==0 or len(spiders) == 0 or len(flies) >=100000):
+        if(len(flies) ==0 or len(spiders) == 0 or len(flies) >=30000):
             if len(flies) <=0:
                 for i in range(nflies):
-                        flies.append(fl.fly(ram.randint(0,1000),ram.randint(0,600)))
+                        flies.append(fl.fly(random.randint(0,wight),random.randint(0,height)))
+            elif len(spiders) <=0:
+                for i in range(nspiders):
+                        spiders.append(sp.spider(random.randint(0,wight),random.randint(0,height)))
             else:
                 break   
         # time.sleep(.01)
@@ -56,14 +59,14 @@ def main():
     print(spy)
     print(fli)
     # plt.subplot(211)
-    plt.plot(series,spy,label="Spiders")
     plt.plot(series,fli,label="Flies")
+    plt.plot(series,spy,label="Spiders")
     plt.legend(bbox_to_anchor=(.8,1),loc=2,borderaxespad=0 )
     plt.show()
     # draw final
     clear(win)
-    drawspiders(spiders,win,spiderspoints)    
     drawflies(flies,win,flypoints)
+    drawspiders(spiders,win,spiderspoints)    
     win.getMouse()
     win.close()
 def clear(window):
@@ -72,10 +75,10 @@ def clear(window):
     window.update()
 def drawspiders(elements,window,points):
     for i in elements:
-            i.putspider(window,points)
+            i.simpledraw(window)
 def drawflies(elements,window,points):
     for i in elements:
-        i.putfly(window,points)
+        i.simpledraw(window)
 def moveflies(elements):
     for i in elements:
         i.move(wight,height)
