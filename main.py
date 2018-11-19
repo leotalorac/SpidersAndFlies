@@ -59,14 +59,15 @@ def main():
     print(spy)
     print(fli)
     # plt.subplot(211)
-    plt.plot(series,fli,label="Flies")
-    plt.plot(series,spy,label="Spiders")
-    plt.legend(bbox_to_anchor=(.8,1),loc=2,borderaxespad=0 )
-    plt.show()
+    
     # draw final
     clear(win)
     drawflies(flies,win,flypoints)
     drawspiders(spiders,win,spiderspoints)    
+    plt.plot(series,fli,label="Flies")
+    plt.plot(series,spy,label="Spiders")
+    plt.legend(bbox_to_anchor=(.8,1),loc=2,borderaxespad=0 )
+    plt.show()
     win.getMouse()
     win.close()
 def clear(window):
@@ -75,7 +76,8 @@ def clear(window):
     window.update()
 def drawspiders(elements,window,points):
     for i in elements:
-            i.simpledraw(window)
+        i.simpledraw(window)
+        # i.putspider(window,points)
 def drawflies(elements,window,points):
     for i in elements:
         i.simpledraw(window)
